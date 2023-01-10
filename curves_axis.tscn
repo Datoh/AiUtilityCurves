@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://3yjvqc33ej06"]
+
+[ext_resource type="Script" path="res://curves_axis.gd" id="1_jmtcc"]
+[ext_resource type="Script" path="res://curve_axis_graph.gd" id="2_fo4jk"]
+[ext_resource type="PackedScene" uid="uid://dcdrh52fkwufc" path="res://curve_edit.tscn" id="3_xiret"]
+
+[node name="AxisContainer" type="HBoxContainer"]
+script = ExtResource("1_jmtcc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonAxis" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Axis name"
+
+[node name="MoveAxisPrevious" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "<-"
+
+[node name="MoveAxisNext" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "->"
+
+[node name="DeleteAxis" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="Graph" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_fo4jk")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="CurveEdit" parent="." instance=ExtResource("3_xiret")]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAxis" to="." method="_on_button_axis_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MoveAxisPrevious" to="." method="_on_move_axis_previous_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MoveAxisNext" to="." method="_on_move_axis_next_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/DeleteAxis" to="." method="_on_delete_axis_pressed"]
+[connection signal="popup_hide" from="CurveEdit" to="." method="_on_curve_edit_popup_hide"]

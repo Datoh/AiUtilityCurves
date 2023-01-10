@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://doi2xqlcmvtff"]
+
+[ext_resource type="PackedScene" uid="uid://3yjvqc33ej06" path="res://curves_axis.tscn" id="1_7wwgd"]
+[ext_resource type="Script" path="res://curves_action.gd" id="1_l4dgq"]
+
+[node name="ActionContainer" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_l4dgq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 95.0
+offset_bottom = 42.0
+
+[node name="LabelAction" type="TextEdit" parent="HBoxContainer"]
+offset_right = 8.0
+offset_bottom = 42.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Action 1"
+placeholder_text = "Action 1"
+
+[node name="MoveActionPrevious" type="Button" parent="HBoxContainer"]
+offset_left = 12.0
+offset_right = 38.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+text = "U"
+
+[node name="MoveActionNext" type="Button" parent="HBoxContainer"]
+offset_left = 42.0
+offset_right = 68.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+text = "D"
+
+[node name="DeleteAction" type="Button" parent="HBoxContainer"]
+offset_left = 72.0
+offset_right = 95.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+offset_top = 46.0
+offset_right = 95.0
+offset_bottom = 219.0
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+offset_right = 238.0
+offset_bottom = 165.0
+
+[node name="AxisContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer"]
+offset_right = 208.0
+offset_bottom = 165.0
+
+[node name="AxisContainer1" parent="ScrollContainer/HBoxContainer/AxisContainer" instance=ExtResource("1_7wwgd")]
+offset_right = 208.0
+offset_bottom = 165.0
+
+[node name="ButtonAddAxis" type="Button" parent="ScrollContainer/HBoxContainer"]
+offset_left = 212.0
+offset_right = 238.0
+offset_bottom = 165.0
+text = " + "
+
+[node name="HSeparator" type="HSeparator" parent="."]
+offset_top = 223.0
+offset_right = 95.0
+offset_bottom = 227.0
+
+[connection signal="pressed" from="HBoxContainer/MoveActionPrevious" to="." method="_on_move_action_previous_pressed"]
+[connection signal="pressed" from="HBoxContainer/MoveActionNext" to="." method="_on_move_action_next_pressed"]
+[connection signal="pressed" from="HBoxContainer/DeleteAction" to="." method="_on_delete_action_pressed"]
+[connection signal="need_reload" from="ScrollContainer/HBoxContainer/AxisContainer/AxisContainer1" to="." method="_on_axis_container_need_reload"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/ButtonAddAxis" to="." method="_on_button_add_axis_pressed"]

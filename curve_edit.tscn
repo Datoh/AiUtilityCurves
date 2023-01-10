@@ -1,0 +1,272 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcdrh52fkwufc"]
+
+[ext_resource type="Script" path="res://curve_edit.gd" id="1_gk0yi"]
+[ext_resource type="Script" path="res://curve_axis_graph.gd" id="2_2xy5n"]
+
+[node name="CurveEdit" type="PopupPanel"]
+size = Vector2i(308, 571)
+visible = true
+script = ExtResource("1_gk0yi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 304.0
+offset_bottom = 567.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 295.0
+offset_bottom = 558.0
+
+[node name="MenuButtonCurveType" type="MenuButton" parent="MarginContainer/VBoxContainer"]
+offset_right = 290.0
+offset_bottom = 31.0
+text = "Curve: Logit"
+alignment = 0
+
+[node name="MenuButtonPreset" type="MenuButton" parent="MarginContainer/VBoxContainer"]
+offset_top = 35.0
+offset_right = 290.0
+offset_bottom = 66.0
+text = "Presets"
+alignment = 0
+
+[node name="HBoxContainerName" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 70.0
+offset_right = 290.0
+offset_bottom = 102.0
+
+[node name="LabelName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 29.0
+text = "Name"
+
+[node name="ValueName" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainerName"]
+custom_minimum_size = Vector2(0, 32)
+offset_left = 51.0
+offset_right = 290.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+placeholder_text = "axis name"
+
+[node name="HBoxContainerMethod" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 106.0
+offset_right = 290.0
+offset_bottom = 138.0
+
+[node name="LabelMethod" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerMethod"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 3.0
+offset_right = 61.0
+offset_bottom = 29.0
+text = "Method"
+
+[node name="ValueMethod" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainerMethod"]
+custom_minimum_size = Vector2(0, 32)
+offset_left = 65.0
+offset_right = 290.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+placeholder_text = "method name"
+
+[node name="HBoxContainerM" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 142.0
+offset_right = 290.0
+offset_bottom = 173.0
+
+[node name="LabelM" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerM"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 28.0
+text = "M"
+
+[node name="HSliderM" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainerM"]
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 203.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 10000.0
+
+[node name="SpinBoxM" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainerM"]
+offset_left = 207.0
+offset_right = 290.0
+offset_bottom = 31.0
+max_value = 10000.0
+
+[node name="LabelMDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_top = 177.0
+offset_right = 290.0
+offset_bottom = 197.0
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_font_sizes/font_size = 12
+text = "value description"
+autowrap_mode = 3
+
+[node name="HBoxContainerK" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 201.0
+offset_right = 290.0
+offset_bottom = 232.0
+
+[node name="LabelK" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerK"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 28.0
+text = "K"
+
+[node name="HSliderK" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainerK"]
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 203.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="SpinBoxK" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainerK"]
+offset_left = 207.0
+offset_right = 290.0
+offset_bottom = 31.0
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="LabelKDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_top = 236.0
+offset_right = 290.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_font_sizes/font_size = 12
+text = "value description"
+autowrap_mode = 3
+
+[node name="HBoxContainerB" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 260.0
+offset_right = 290.0
+offset_bottom = 291.0
+
+[node name="LabelB" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerB"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 28.0
+text = "B"
+
+[node name="HSliderB" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainerB"]
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 203.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="SpinBoxB" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainerB"]
+offset_left = 207.0
+offset_right = 290.0
+offset_bottom = 31.0
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="LabelBDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_top = 295.0
+offset_right = 290.0
+offset_bottom = 315.0
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_font_sizes/font_size = 12
+text = "value description"
+autowrap_mode = 3
+
+[node name="HBoxContainerC" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 319.0
+offset_right = 290.0
+offset_bottom = 350.0
+
+[node name="LabelC" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainerC"]
+custom_minimum_size = Vector2(30, 0)
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 28.0
+text = "C"
+
+[node name="HSliderC" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainerC"]
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 203.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="SpinBoxC" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainerC"]
+offset_left = 207.0
+offset_right = 290.0
+offset_bottom = 31.0
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+
+[node name="LabelCDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_top = 354.0
+offset_right = 290.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_font_sizes/font_size = 12
+text = "value description"
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 378.0
+offset_right = 290.0
+offset_bottom = 518.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Graph" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 130)
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 285.0
+offset_bottom = 135.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_2xy5n")
+
+[node name="ButtonReset" type="Button" parent="MarginContainer/VBoxContainer"]
+offset_top = 522.0
+offset_right = 290.0
+offset_bottom = 553.0
+text = "Reset"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerM/HSliderM" to="." method="_on_m_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerM/SpinBoxM" to="." method="_on_m_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerK/HSliderK" to="." method="_on_k_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerK/SpinBoxK" to="." method="_on_k_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerB/HSliderB" to="." method="_on_b_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerB/SpinBoxB" to="." method="_on_b_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerC/HSliderC" to="." method="_on_c_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainerC/SpinBoxC" to="." method="_on_c_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonReset" to="." method="_on_button_reset_pressed"]
